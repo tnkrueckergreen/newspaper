@@ -11,3 +11,4 @@
 - Admin article create/edit form includes a “Disable comments” toggle in the Publishing card.
 - Public and admin article APIs return `comments_disabled`.
 - Comment posting is blocked server-side for articles where comments are disabled, while existing comments can still display.
+- Added admin staff ordering controls. Staff records use `sort_order`; admins can move members up/down in Account → Admin → Staff, and the About page follows that order.

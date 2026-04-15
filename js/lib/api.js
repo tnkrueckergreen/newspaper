@@ -808,6 +808,24 @@ export async function updateAdminStaff(id, formData) {
     }
 }
 
+export async function reorderAdminStaff(staffIds) {
+    try {
+        const response = await apiFetch('/api/admin/staff/order', {
+            method: 'PUT',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ staffIds })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Failed to update staff order');
+        invalidateCache();
+        return data;
+    } catch (error) {
+        console.error('Error reordering staff:', error);
+        return { success: false, error: error.message };
+    }
+}
+
 export async function deleteAdminStaff(id) {
     try {
         const response = await apiFetch(`/api/admin/staff/${id}`, {

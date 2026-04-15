@@ -1,7 +1,7 @@
 import { getIsLoggedIn, handleLogout, updateCurrentUser, getCurrentUser, waitForAuth } from '../lib/auth.js';
 import { navigate } from '../lib/router.js';
 import { apiFetch } from '../lib/csrf.js';
-import { getAccountData, deleteAccount, getCombinedData, changeUsername, changePassword, changeEmail, getAdminStats, getAdminUsers, deleteUserByAdmin, getAdminArticles, getRecentCommentsAdmin, editComment, deleteComment, getAdminDashboard, getUserProfile, getUserActivity, adminSearch, deleteArticle, toggleArticleStatus, toggleArticleFeatured, getAdminIssues, addAdminIssue, deleteAdminIssue, getAdminContacts, deleteAdminContact, getAdminStaff, createAdminStaff, updateAdminStaff, deleteAdminStaff } from '../lib/api.js';
+import { getAccountData, deleteAccount, getCombinedData, changeUsername, changePassword, changeEmail, getAdminStats, getAdminUsers, deleteUserByAdmin, getAdminArticles, getRecentCommentsAdmin, editComment, deleteComment, getAdminDashboard, getUserProfile, getUserActivity, adminSearch, deleteArticle, toggleArticleStatus, toggleArticleFeatured, getAdminIssues, addAdminIssue, deleteAdminIssue, getAdminContacts, deleteAdminContact, getAdminStaff, createAdminStaff, updateAdminStaff, reorderAdminStaff, deleteAdminStaff } from '../lib/api.js';
 import { showError, showSuccess, showWarning } from '../lib/toast.js';
 import { Avatar } from '../components/common/Avatar.js';
 import { initPasswordToggle } from '../lib/passwordToggle.js';
@@ -1709,6 +1709,25 @@ async function loadAdminStaff() {
     container.innerHTML = '<div class="loader-inline"></div>';
     const staffList = await getAdminStaff();
 
+    async function moveStaffMember(id, direction) {
+        const currentIndex = staffList.findIndex(member => member.id === id);
+        const nextIndex = currentIndex + direction;
+        if (currentIndex === -1 || nextIndex < 0 || nextIndex >= staffList.length) return;
+
+        const nextStaffList = [...staffList];
+        [nextStaffList[currentIndex], nextStaffList[nextIndex]] = [nextStaffList[nextIndex], nextStaffList[currentIndex]];
+        container.classList.add('admin-loading-state');
+        const result = await reorderAdminStaff(nextStaffList.map(member => member.id));
+        container.classList.remove('admin-loading-state');
+
+        if (result.success) {
+            showSuccess('Staff order updated.');
+            loadAdminStaff();
+        } else {
+            showError(result.error || 'Failed to update staff order.');
+        }
+    }
+
     if (staffList.length === 0) {
         container.innerHTML = '<p class="empty-state-text">No staff members yet. Click "+ Add Staff Member" to get started.</p>';
     } else {
@@ -1717,6 +1736,7 @@ async function loadAdminStaff() {
                 <table class="admin-table">
                     <thead>
                         <tr>
+                            <th style="width:96px;">Order</th>
                             <th style="width:56px;"></th>
                             <th>Name</th>
                             <th>Role</th>
@@ -1725,7 +1745,7 @@ async function loadAdminStaff() {
                         </tr>
                     </thead>
                     <tbody>
-                        ${staffList.map(member => {
+                        ${staffList.map((member, index) => {
                             const imgSrc = member.image
                                 ? (member.image.startsWith('data/') || member.image.startsWith('uploads/') ? `/${member.image}` : member.image)
                                 : '';
@@ -1735,6 +1755,12 @@ async function loadAdminStaff() {
                                 : `background: var(--color-border);`;
                             return `
                             <tr data-staff-id="${member.id}">
+                                <td>
+                                    <div class="staff-order-controls" aria-label="Change order for ${member.name}">
+                                        <button class="button-icon-only staff-move-btn" data-id="${member.id}" data-direction="-1" title="Move up" ${index === 0 ? 'disabled' : ''}>↑</button>
+                                        <button class="button-icon-only staff-move-btn" data-id="${member.id}" data-direction="1" title="Move down" ${index === staffList.length - 1 ? 'disabled' : ''}>↓</button>
+                                    </div>
+                                </td>
                                 <td style="width:56px; padding-right:0;">
                                     <div class="avatar avatar--medium" style="${avatarStyle}"></div>
                                 </td>
@@ -1768,6 +1794,14 @@ async function loadAdminStaff() {
     }
 
     // Attach edit listeners
+    container.querySelectorAll('.staff-move-btn').forEach(btn => {
+        addTrackedListener(btn, 'click', () => {
+            const id = parseInt(btn.dataset.id, 10);
+            const direction = parseInt(btn.dataset.direction, 10);
+            moveStaffMember(id, direction);
+        });
+    });
+
     container.querySelectorAll('.staff-edit-btn').forEach(btn => {
         addTrackedListener(btn, 'click', () => {
             const id = parseInt(btn.dataset.id, 10);

@@ -1100,6 +1100,49 @@ router.post('/staff', isAdmin, uploadStaffImage.single('image'), async (req, res
     }
 });
 
+router.put('/staff/order', isAdmin, async (req, res) => {
+    try {
+        const { staffIds } = req.body;
+        if (!Array.isArray(staffIds) || staffIds.length === 0) {
+            return res.status(400).json({ error: 'staffIds must be a non-empty array.' });
+        }
+
+        const normalizedIds = staffIds.map(id => parseInt(id, 10));
+        if (normalizedIds.some(id => !Number.isInteger(id))) {
+            return res.status(400).json({ error: 'All staff IDs must be valid numbers.' });
+        }
+
+        const uniqueIds = new Set(normalizedIds);
+        if (uniqueIds.size !== normalizedIds.length) {
+            return res.status(400).json({ error: 'Staff IDs must not contain duplicates.' });
+        }
+
+        const db = await initializeDatabase();
+        const existingRows = await db.all('SELECT id FROM staff');
+        const existingIds = new Set(existingRows.map(row => row.id));
+        if (existingIds.size !== normalizedIds.length || normalizedIds.some(id => !existingIds.has(id))) {
+            return res.status(400).json({ error: 'Staff order must include every current staff member exactly once.' });
+        }
+
+        await db.run('BEGIN TRANSACTION');
+        try {
+            for (let index = 0; index < normalizedIds.length; index++) {
+                await db.run('UPDATE staff SET sort_order = ? WHERE id = ?', index, normalizedIds[index]);
+            }
+            await db.run('COMMIT');
+        } catch (error) {
+            await db.run('ROLLBACK');
+            throw error;
+        }
+
+        await reloadContent();
+        res.json({ success: true, message: 'Staff order updated.' });
+    } catch (error) {
+        console.error('Error updating staff order:', error);
+        res.status(500).json({ error: 'Failed to update staff order.' });
+    }
+});
+
 router.put('/staff/:id', isAdmin, uploadStaffImage.single('image'), async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);

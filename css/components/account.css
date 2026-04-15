@@ -817,6 +817,22 @@
   border-bottom: none;
 }
 
+.staff-order-controls {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.staff-move-btn {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.staff-move-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 /* Contact Responses cards */
 .response-cards-list {
   display: flex;
