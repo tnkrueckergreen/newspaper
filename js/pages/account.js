@@ -1386,7 +1386,7 @@ async function loadAdminIssues() {
                     </thead>
                     <tbody>
                         ${issues.map(issue => `
-                            <tr>
+                            <tr data-issue-filename="${issue.filename}">
                                 <td>${issue.name}</td>
                                 <td>${new Date(issue.date).toLocaleDateString()}</td>
                                 <td>${issue.filename}</td>
@@ -1412,11 +1412,17 @@ async function loadAdminIssues() {
             addTrackedListener(btn, 'click', async () => {
                 const filename = btn.getAttribute('data-filename');
                 if (confirm(`Are you sure you want to delete the issue "${filename}"?`)) {
+                    const row = btn.closest('tr');
+                    btn.disabled = true;
                     const result = await deleteAdminIssue(filename);
                     if (result.success) {
                         showSuccess('Issue deleted successfully');
-                        loadAdminIssues();
+                        row?.remove();
+                        if (!container.querySelector('tbody tr')) {
+                            container.innerHTML = '<p class="empty-state-text">No issues found.</p>';
+                        }
                     } else {
+                        btn.disabled = false;
                         showError(result.error);
                     }
                 }
