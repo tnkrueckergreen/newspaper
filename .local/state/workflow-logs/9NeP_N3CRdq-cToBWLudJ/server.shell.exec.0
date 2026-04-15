@@ -1,0 +1,22 @@
+node:internal/modules/cjs/loader:1372
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/runner/workspace/backend/server.js
+[90m    at Module._resolveFilename (node:internal/modules/cjs/loader:1369:15)[39m
+[90m    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)[39m
+[90m    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)[39m
+[90m    at Module._load (node:internal/modules/cjs/loader:1179:37)[39m
+[90m    at TracingChannel.traceSync (node:diagnostics_channel:322:14)[39m
+[90m    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1449:12)[39m
+[90m    at require (node:internal/modules/helpers:135:16)[39m
+    at Object.<anonymous> [90m(/home/runner/workspace/[39mbackend/server.js:1:17[90m)[39m
+[90m    at Module._compile (node:internal/modules/cjs/loader:1692:14)[39m {
+  code: [32m'MODULE_NOT_FOUND'[39m,
+  requireStack: [ [32m'/home/runner/workspace/backend/server.js'[39m ]
+}
+
+Node.js v24.3.0

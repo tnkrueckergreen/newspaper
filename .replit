@@ -1,0 +1,65 @@
+modules = ["nodejs-20", "python-3.11", "web", "postgresql-16"]
+
+[workspace]
+hidden = [
+  "data/db",
+  "data/uploads",
+  "data/articles/images",
+  "data/issues/pdfs",
+  "data/issues/covers",
+  "data/staff/images",
+  "*.sqlite",
+  "*.sqlite-journal",
+  "*.sqlite-wal",
+  "*.sqlite-shm",
+  "node_modules",
+  ".npm"
+]
+
+[nix]
+channel = "stable-25_05"
+packages = ["sqlite", "unzip", "util-linux", "fontconfig", "nodejs_24", "poppler_utils", "psmisc", "wget"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Server"
+
+[[workflows.workflow]]
+name = "Server"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node backend/server.js"
+waitForPort = 5000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 5555
+externalPort = 3000
+
+[deployment]
+deploymentTarget = "cloudrun"
+run = ["npm", "start"]
+
+[userenv]
+
+[userenv.shared]
+GMAIL_USER = "andoverview@gmail.com"
+
+[agent]
+expertMode = true
