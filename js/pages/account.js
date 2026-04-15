@@ -2319,7 +2319,8 @@ export async function render(container) {
     attachEventListeners();
 
     // Auto-open admin tab if requested by a shortcut link
-    const autoTab = sessionStorage.getItem('adminAutoOpenTab');
+    const requestedTab = new URLSearchParams(window.location.search).get('tab');
+    const autoTab = requestedTab === 'admin' ? 'overview' : sessionStorage.getItem('adminAutoOpenTab');
     if (autoTab) {
         sessionStorage.removeItem('adminAutoOpenTab');
         if (finalData.user.is_admin) {

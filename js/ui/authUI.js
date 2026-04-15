@@ -5,6 +5,9 @@ export function updateAuthUI(isLoggedIn, currentUser) {
     const authStatusContainer = document.getElementById('auth-status');
     const authBtnMobileContainer = document.getElementById('auth-btn-mobile');
     const isAdmin = isLoggedIn && currentUser && currentUser.is_admin;
+    const accountHref = isAdmin ? '/account?tab=admin' : '/account';
+    const accountLabel = isAdmin ? 'Admin' : 'My Account';
+    const accountTitle = isAdmin ? 'Admin Panel' : 'My Account';
 
     document.body.classList.toggle('user-is-logged-in', isLoggedIn);
     document.body.classList.toggle('user-is-admin', !!isAdmin);
@@ -23,13 +26,14 @@ export function updateAuthUI(isLoggedIn, currentUser) {
             }
 
             const myAccountLink = document.createElement('a');
-            myAccountLink.href = '/account';
+            myAccountLink.href = accountHref;
             myAccountLink.className = 'button-secondary';
-            myAccountLink.textContent = 'My Account';
+            myAccountLink.textContent = accountLabel;
+            myAccountLink.title = accountTitle;
 
             const avatarLink = document.createElement('a');
-            avatarLink.href = '/account';
-            avatarLink.title = 'My Account';
+            avatarLink.href = accountHref;
+            avatarLink.title = accountTitle;
             avatarLink.className = 'header-avatar-link';
 
             const avatarHTML = Avatar({
@@ -58,9 +62,10 @@ export function updateAuthUI(isLoggedIn, currentUser) {
                 authBtnMobileContainer.appendChild(newArticleMobileLink);
             }
             const myAccountLink = document.createElement('a');
-            myAccountLink.href = '/account';
+            myAccountLink.href = accountHref;
             myAccountLink.className = 'button-secondary';
-            myAccountLink.textContent = 'My Account';
+            myAccountLink.textContent = accountLabel;
+            myAccountLink.title = accountTitle;
             authBtnMobileContainer.appendChild(myAccountLink);
         } else {
             authBtnMobileContainer.innerHTML = '<a href="/login" class="button-secondary">Log In</a>';
