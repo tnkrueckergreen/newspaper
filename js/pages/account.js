@@ -1716,13 +1716,14 @@ async function loadAdminStaff() {
 
         const nextStaffList = [...staffList];
         [nextStaffList[currentIndex], nextStaffList[nextIndex]] = [nextStaffList[nextIndex], nextStaffList[currentIndex]];
+        const scrollY = window.scrollY;
         container.classList.add('admin-loading-state');
         const result = await reorderAdminStaff(nextStaffList.map(member => member.id));
         container.classList.remove('admin-loading-state');
 
         if (result.success) {
-            showSuccess('Staff order updated.');
-            loadAdminStaff();
+            await loadAdminStaff();
+            requestAnimationFrame(() => window.scrollTo(0, scrollY));
         } else {
             showError(result.error || 'Failed to update staff order.');
         }
