@@ -1707,7 +1707,7 @@ async function loadAdminStaff() {
     if (!container) return;
 
     container.innerHTML = '<div class="loader-inline"></div>';
-    const staffList = await getAdminStaff();
+    let staffList = await getAdminStaff();
 
     async function moveStaffMember(id, direction) {
         const currentIndex = staffList.findIndex(member => member.id === id);
@@ -1716,17 +1716,35 @@ async function loadAdminStaff() {
 
         const nextStaffList = [...staffList];
         [nextStaffList[currentIndex], nextStaffList[nextIndex]] = [nextStaffList[nextIndex], nextStaffList[currentIndex]];
-        const scrollY = window.scrollY;
         container.classList.add('admin-loading-state');
         const result = await reorderAdminStaff(nextStaffList.map(member => member.id));
         container.classList.remove('admin-loading-state');
 
         if (result.success) {
-            await loadAdminStaff();
-            requestAnimationFrame(() => window.scrollTo(0, scrollY));
+            const currentRow = container.querySelector(`tr[data-staff-id="${id}"]`);
+            const targetRow = container.querySelector(`tr[data-staff-id="${staffList[nextIndex].id}"]`);
+            if (currentRow && targetRow) {
+                const tbody = currentRow.parentElement;
+                if (direction < 0) {
+                    tbody.insertBefore(currentRow, targetRow);
+                } else {
+                    tbody.insertBefore(targetRow, currentRow);
+                }
+            }
+            staffList = nextStaffList;
+            updateStaffMoveButtons();
         } else {
             showError(result.error || 'Failed to update staff order.');
         }
+    }
+
+    function updateStaffMoveButtons() {
+        staffList.forEach((member, index) => {
+            const row = container.querySelector(`tr[data-staff-id="${member.id}"]`);
+            if (!row) return;
+            row.querySelector('.staff-move-btn[data-direction="-1"]').disabled = index === 0;
+            row.querySelector('.staff-move-btn[data-direction="1"]').disabled = index === staffList.length - 1;
+        });
     }
 
     if (staffList.length === 0) {
