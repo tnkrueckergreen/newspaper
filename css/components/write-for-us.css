@@ -1,0 +1,228 @@
+.write-for-us-page .page-header {
+    padding-bottom: 2rem;
+}
+
+.write-for-us-page .page-header h1 {
+    font-size: 3.5rem;
+}
+
+.write-for-us-page .page-header p {
+    font-size: 1.1rem;
+    max-width: 700px;
+}
+
+.write-content-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.opportunities-section {
+    margin-bottom: 3rem;
+}
+
+.opportunities-section h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--color-dark);
+}
+
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.opportunity-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.opportunity-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.opportunity-icon {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+}
+
+.opportunity-icon img {
+    width: 4.5rem;
+    height: 4.5rem;
+    display: block;
+}
+
+.opportunity-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-brand-blue);
+}
+
+.opportunity-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.write-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.write-section h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--color-brand-blue);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.write-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+}
+
+.write-section p:last-child {
+    margin-bottom: 0;
+}
+
+.write-section a {
+    color: var(--color-brand-blue);
+    text-decoration: underline;
+}
+
+.write-section a:hover {
+    opacity: 0.8;
+}
+
+.about-description h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-brand-blue);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.about-description h2:first-child {
+    margin-top: 1rem;
+}
+
+.write-contact-callout {
+    background: linear-gradient(135deg, var(--color-brand-blue) 0%, #003d82 100%);
+    border-radius: 16px;
+    padding: 3rem;
+    margin-top: 3rem;
+    text-align: center;
+    color: white;
+}
+
+.callout-content h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.callout-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.callout-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-btn.primary {
+    background-color: white;
+    color: var(--color-brand-blue);
+}
+
+.contact-btn.primary:hover {
+    background-color: white;
+}
+
+.contact-btn.secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.contact-btn.secondary:hover {
+    background-color: white;
+    color: var(--color-brand-blue);
+}
+
+@media (max-width: 768px) {
+    .write-for-us-page .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .write-contact-callout {
+        padding: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .callout-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .callout-content h3 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .opportunity-card {
+        padding: 1.5rem;
+    }
+
+    .write-section h2 {
+        font-size: 1.5rem;
+    }
+}

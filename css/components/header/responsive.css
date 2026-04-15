@@ -1,0 +1,260 @@
+@media (max-width: 1240px) {
+    .mobile-toggle { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .header-center-content .main-nav {
+        display: none;
+    }
+    .header-right .button-primary {
+        display: none;
+    }
+    .header-right .auth-status {
+        display: none;
+    }
+
+    .main-header.nav-open .main-nav {
+        display: block;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        padding: 1rem 0 3rem 0;
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .main-header.nav-open .main-nav ul { 
+        flex-direction: column; 
+        width: 100%; 
+        gap: 0; 
+    }
+    .main-header.nav-open .main-nav li { 
+        margin: 0; 
+        text-align: left; 
+        border-bottom: 1px solid var(--color-border); 
+    }
+    .main-header.nav-open .main-nav li:first-child { 
+        border-top: 1px solid var(--color-border); 
+    }
+    .main-header.nav-open .main-nav a:not([class*="button-"]) { 
+        padding: 1rem 1.5rem; 
+        display: block; 
+        border-bottom: none; 
+    }
+    .main-header.nav-open .submenu-toggle {
+        display: inline-block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--color-text-secondary);
+        line-height: 1;
+    }
+    .main-header.nav-open .main-nav .subscribe-btn-mobile,
+    .main-header.nav-open .main-nav .auth-btn-mobile {
+        border-bottom: none;
+    }
+    .main-header.nav-open .subscribe-btn-mobile {
+        display: block;
+        padding: 0.75rem 1.5rem 0;
+    }
+    .main-header.nav-open .auth-btn-mobile {
+        display: block;
+        padding: 0.75rem 1.5rem;
+    }
+    .main-header.nav-open .subscribe-btn-mobile a.button-primary,
+    .main-header.nav-open .auth-btn-mobile .button-secondary,
+    .main-header.nav-open .auth-btn-mobile .button-admin-new {
+        width: auto;
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.625rem 1.25rem;
+    }
+    .main-header.nav-open .subscribe-btn-mobile a.button-primary:hover {
+        color: white;
+    }
+
+    .main-header.nav-open .dropdown-menu { 
+        position: static; 
+        display: none;
+        opacity: 1; 
+        visibility: visible;
+        pointer-events: auto;
+        transform: none; 
+        box-shadow: none; 
+        background-color: var(--color-light-gray);
+        padding: 0; 
+        border: none;
+        min-width: 100%;
+        border-radius: 0;
+    }
+    .main-header.nav-open .dropdown.is-open .dropdown-menu {
+        display: block;
+    }
+    .main-header.nav-open .dropdown-menu a {
+        padding-left: 2.5rem;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+    }
+    .main-header.nav-open .dropdown-menu a:hover {
+        color: var(--color-dark);
+    }
+    .main-header.nav-open .dropdown > a.nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* need wider breakpoint for logged in users cause of avatar pic in nav bar */
+@media (max-width: 1330px) {
+    body.user-is-logged-in .mobile-toggle { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    body.user-is-logged-in .header-center-content .main-nav {
+        display: none;
+    }
+    body.user-is-logged-in .header-right .button-primary {
+        display: none;
+    }
+    body.user-is-logged-in .header-right .auth-status {
+        display: none;
+    }
+
+    body.user-is-logged-in .main-header.nav-open .main-nav {
+        display: block;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        padding: 1rem 0 3rem 0;
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    body.user-is-logged-in .main-header.nav-open .main-nav ul { 
+        flex-direction: column; 
+        width: 100%; 
+        gap: 0; 
+    }
+    body.user-is-logged-in .main-header.nav-open .main-nav li { 
+        margin: 0; 
+        text-align: left; 
+        border-bottom: 1px solid var(--color-border); 
+    }
+    body.user-is-logged-in .main-header.nav-open .main-nav li:first-child { 
+        border-top: 1px solid var(--color-border); 
+    }
+    body.user-is-logged-in .main-header.nav-open .main-nav a:not([class*="button-"]) { 
+        padding: 1rem 1.5rem; 
+        display: block; 
+        border-bottom: none; 
+    }
+    body.user-is-logged-in .main-header.nav-open .submenu-toggle {
+        display: inline-block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--color-text-secondary);
+        line-height: 1;
+    }
+    body.user-is-logged-in .main-header.nav-open .main-nav .subscribe-btn-mobile,
+    body.user-is-logged-in .main-header.nav-open .main-nav .auth-btn-mobile {
+        border-bottom: none;
+    }
+    body.user-is-logged-in .main-header.nav-open .subscribe-btn-mobile {
+        display: block;
+        padding: 0.75rem 1.5rem 0;
+    }
+    body.user-is-logged-in .main-header.nav-open .auth-btn-mobile {
+        display: block;
+        padding: 0.75rem 1.5rem;
+    }
+    body.user-is-logged-in .main-header.nav-open .subscribe-btn-mobile a.button-primary,
+    body.user-is-logged-in .main-header.nav-open .auth-btn-mobile .button-secondary,
+    body.user-is-logged-in .main-header.nav-open .auth-btn-mobile .button-admin-new {
+        width: auto;
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.625rem 1.25rem;
+    }
+    body.user-is-logged-in .main-header.nav-open .subscribe-btn-mobile a.button-primary:hover {
+        color: white;
+    }
+
+    body.user-is-logged-in .main-header.nav-open .dropdown-menu { 
+        position: static; 
+        display: none;
+        opacity: 1; 
+        visibility: visible;
+        pointer-events: auto;
+        transform: none; 
+        box-shadow: none; 
+        background-color: var(--color-light-gray);
+        padding: 0; 
+        border: none;
+        min-width: 100%;
+        border-radius: 0;
+    }
+    body.user-is-logged-in .main-header.nav-open .dropdown.is-open .dropdown-menu {
+        display: block;
+    }
+    body.user-is-logged-in .main-header.nav-open .dropdown-menu a {
+        padding-left: 2.5rem;
+        font-weight: 400;
+        color: var(--color-text-secondary);
+    }
+    body.user-is-logged-in .main-header.nav-open .dropdown-menu a:hover {
+        color: var(--color-dark);
+    }
+    body.user-is-logged-in .main-header.nav-open .dropdown > a.nav-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.main-header.nav-open .auth-btn-mobile .button-secondary,
+body.user-is-logged-in .main-header.nav-open .auth-btn-mobile .button-secondary {
+    border: 0;
+    box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+.main-header.nav-open .auth-btn-mobile .button-admin-new,
+body.user-is-logged-in .main-header.nav-open .auth-btn-mobile .button-admin-new {
+    border: 1.5px solid var(--color-brand-blue) !important;
+    height: clamp(40px, 10vw, 44px);
+    font-size: clamp(0.8rem, 2.5vw, 0.9375rem);
+}
+
+.main-header.nav-open .auth-btn-mobile .button-admin-new:hover,
+body.user-is-logged-in .main-header.nav-open .auth-btn-mobile .button-admin-new:hover {
+    color: #fff;
+}
+
+.main-header.nav-open .auth-btn-mobile,
+body.user-is-logged-in .main-header.nav-open .auth-btn-mobile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+}

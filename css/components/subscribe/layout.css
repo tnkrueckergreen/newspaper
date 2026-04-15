@@ -1,0 +1,44 @@
+/* subscribe page layout styles */
+.subscribe-page .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.subscribe-page .subscribe-content {
+    max-width: 650px;
+}
+
+.subscribe-page .subscribe-content h1 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+}
+
+.subscribe-page .subscribe-content p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 1rem auto 0 auto;
+}
+
+/* responsivenesssss */
+@media (max-width: 768px) {
+    .subscribe-page .subscribe-content {
+        padding: 0 1rem;
+    }
+    
+    .subscribe-page .subscribe-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .subscribe-page .subscribe-content h1 {
+        font-size: 1.8rem;
+    }
+}

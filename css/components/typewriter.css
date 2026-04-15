@@ -1,0 +1,18 @@
+/* crazy cool typerwriter effect */
+.typewriter-heading {
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    content: "|";
+    font-weight: 400;
+    color: var(--color-brand-blue);
+    margin-left: 2px;
+    opacity: 1;
+    position: relative;
+    top: -0.1em;
+}
+
+/* i dont forget u small screens */
+@media (max-width: 768px) {
+}

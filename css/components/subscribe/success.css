@@ -1,0 +1,25 @@
+/* success message styles */
+.subscribe-page .subscribe-success {
+    background-color: var(--color-light-gray);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-brand-blue);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe-page .subscribe-success.active {
+    opacity: 1;
+    pointer-events: auto;
+}

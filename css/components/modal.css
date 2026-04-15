@@ -1,0 +1,49 @@
+/* modal styles */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--color-bg); border-radius: 8px; width: 90%; max-width: 800px; max-height: 90vh;
+    overflow-y: auto; padding: 3rem; position: relative;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2rem; line-height: 1; cursor: pointer; color: var(--color-text-secondary); }
+.modal-close:hover { color: var(--color-dark); }
+.modal-body { display: flex; gap: 2rem; }
+.modal-img { flex-shrink: 0; width: 200px; height: 200px; border-radius: 8px; object-fit: cover; }
+.modal-bio h2 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.2rem; }
+.modal-bio h4 { font-family: var(--font-sans); font-weight: 400; color: var(--color-text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; }
+.modal-bio p { font-size: 1rem; line-height: 1.8; color: var(--color-dark); }
+
+/* responsivenesss */
+@media (max-width: 768px) {
+    .modal-body { 
+        flex-direction: column; 
+    }
+    
+    .modal-img { 
+        width: 100%; 
+        height: 250px; 
+    }
+}

@@ -1,0 +1,125 @@
+/* author bios + multi author display styles */
+.author-bios-container {
+    margin: 3rem 0 0 0;
+    padding: 2.5rem;
+    background-color: var(--color-light-gray);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+}
+
+.author-profile {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.author-profile img { 
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; 
+    flex-shrink: 0; 
+    object-fit: cover;
+}
+
+.author-profile h4 { 
+    font-family: var(--font-sans); 
+    font-weight: 700; 
+    margin-bottom: 0.25rem; 
+}
+
+.author-profile p { 
+    margin-bottom: 0; 
+    font-size: 0.9rem; 
+    line-height: 1.6; 
+}
+
+.author-separator {
+    border: 0;
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 2rem 0;
+}
+
+/* avatar stack for multiple authors */
+.avatar-stack { 
+    display: flex; 
+    align-items: center; 
+    flex-shrink: 0; 
+}
+
+.avatar-stack img {
+    border-radius: 50%; 
+    border: 2px solid var(--color-bg); 
+    box-sizing: content-box;
+    object-fit: cover;
+}
+
+.avatar-stack > *:not(:first-child) { 
+    margin-left: -15px; 
+}
+
+.author-meta.large .avatar-stack img,
+.single-article-meta-top .avatar-stack img {
+    width: 40px;
+    height: 40px;
+}
+
+.author-meta.small .avatar-stack img {
+    width: 30px;
+    height: 30px;
+}
+
+.avatar-more {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 50%; 
+    background-color: var(--color-light-gray);
+    border: 2px solid var(--color-bg); 
+    color: var(--color-text-secondary);
+    font-weight: 600; 
+    box-sizing: content-box;
+}
+
+.author-meta.large .avatar-more, 
+.single-article-meta-top .avatar-more { 
+    width: 40px; 
+    height: 40px; 
+    font-size: 0.8rem; 
+}
+
+.author-meta.small .avatar-more {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+    .author-bios-container {
+        padding: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .author-profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .author-profile img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .author-profile h4 {
+        margin-bottom: 0.5rem;
+    }
+
+    .author-profile p {
+        font-size: 0.85rem;
+    }
+
+    .author-separator {
+        margin: 1.5rem 0;
+    }
+}

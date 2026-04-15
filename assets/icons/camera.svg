@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Main Camera Elements -->
+  <g stroke="#1a1a2e" stroke-miterlimit="10">
+    <!-- Top flash housing -->
+    <path d="m120.5 27.28h-36.98c-3.72 0-6.43 2.61-7.73 6.6l-8.07 22.65 0.1 0.21h68.09l-7.77-23.56c-1.4-3.37-3.92-5.9-7.64-5.9z" fill="#E63946" stroke-width="5"/>
+
+    <!-- Camera body -->
+    <rect x="6" y="56.83" width="188" height="115" rx="12" fill="#E63946" stroke-width="5"/>
+
+    <!-- Yellow stripe -->
+    <rect x="6.8" y="83.15" width="186.4" height="66.58" fill="#FFB703" stroke-width="4.5"/>
+
+    <!-- Outer lens -->
+    <circle cx="101.5" cy="114.6" r="47" fill="#8ECAE6" stroke-width="4.5"/>
+
+    <!-- Inner lens -->
+    <circle cx="101.5" cy="114.6" r="29.3" fill="#023047" stroke-width="5"/>
+  </g>
+
+  <!-- Lens Reflections -->
+  <g fill="none" stroke="#219EBC" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+    <path d="m82.81 114.1c0-10.4 8.28-18.54 17.96-18.54"/>
+    <path d="m117.8 122.8c-1.47 3.68-3.58 6.34-7.3 8.47"/>
+  </g>
+
+  <!-- Buttons & Flash Bulb -->
+  <g stroke="#1a1a2e" stroke-miterlimit="10">
+    <!-- Left button -->
+    <path d="m25.81 48h16.44c3.16 0 3.87 3.26 3.87 4.66v3.96h-24.35v-3.5c0-2.88 1.65-5.12 4.04-5.12z" fill="#FB8500" stroke-width="4.5"/>
+
+    <!-- Right button -->
+    <path d="m153.6 47.17h19.69c2.94 0 4.41 2.78 4.41 4.56v4.89h-27.75v-4.89c0-2.44 1.58-4.56 3.65-4.56z" fill="#06D6A0" stroke-width="4.5"/>
+
+    <!-- Flash bulb -->
+    <path d="m90.45 34.38h23.06c1.26 0 1.66 1.5 1.66 2.33v11.27c0 0.94-0.48 2.01-1.66 2.01h-23.06c-1.25 0-1.93-1.12-1.93-2.18v-11.27c0-1.23 0.76-2.16 1.93-2.16z" fill="#FFCCD5" stroke-width="5"/>
+  </g>
+</svg>

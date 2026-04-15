@@ -1,0 +1,16 @@
+.article-card-linkable {
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+.article-card-linkable:hover {
+    transform: translateY(-8px);
+}
+
+.article-card-linkable.card-is-active {
+    transform: translateY(-2px) scale(0.99);
+    transition-duration: 0.1s;
+}

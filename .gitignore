@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Environment Variables
+.env
+
+# Ignore Database and its temporary locking files
+data/db/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Ignore User Uploads & Auto-generated content
+data/uploads/
+data/articles/images/
+data/issues/pdfs/
+data/issues/covers/
+
+# OS/Mac files
+.DS_Store
+
+# Replit-specific files (not needed on Railway)
+.replit
+.local/
+replit.nix

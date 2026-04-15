@@ -1,0 +1,95 @@
+/* lovely buttons */
+.button-primary {
+    background-color: var(--color-brand-blue);
+    color: white; 
+    border-radius: 9999px;
+    font-weight: 500; 
+    transition: opacity 0.2s ease-in-out;
+    border: none; 
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: clamp(40px, 10vw, 44px);
+    padding: clamp(0.5rem, 2vw, 0.625rem) clamp(0.75rem, 3vw, 1.25rem);
+    font-size: clamp(0.8rem, 2.5vw, 0.9375rem);
+}
+
+.button-primary:hover { 
+    opacity: 0.9; 
+}
+
+.header-action-btn {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    padding: 8px; 
+    color: var(--color-text-secondary);
+}
+
+.header-action-btn:hover { 
+    color: var(--color-dark); 
+}
+
+.button-secondary {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    height: clamp(40px, 10vw, 44px);
+    padding: clamp(0.5rem, 2vw, 0.625rem) clamp(0.75rem, 3vw, 1.25rem);
+    font-size: clamp(0.8rem, 2.5vw, 0.9375rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease-in-out;
+}
+
+.button-secondary:hover {
+    background-color: var(--color-light-gray);
+    color: var(--color-dark);
+    border-color: var(--color-border);
+    opacity: 1;
+}
+
+.auth-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.auth-status .welcome-message {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.auth-status .welcome-message .username {
+    color: var(--color-dark);
+}
+
+.button-admin-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: clamp(34px, 8vw, 38px);
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand-blue);
+    background-color: transparent;
+    border: 1.5px solid var(--color-brand-blue);
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.button-admin-new:hover {
+    background-color: var(--color-brand-blue);
+    color: #fff;
+}

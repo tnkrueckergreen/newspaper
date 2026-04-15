@@ -1,0 +1,30 @@
+.main-nav > ul { 
+    display: flex; 
+    list-style: none; 
+    gap: 32px; 
+}
+
+.main-nav li { 
+    margin: 0; 
+}
+
+.main-nav a { 
+    font-size: 16px; 
+    font-weight: 500; 
+    border-bottom: 2px solid transparent; 
+    padding: 4px 0; 
+}
+
+.main-nav a.active-link, 
+.main-nav a:hover { 
+    color: var(--color-brand-blue); 
+    border-bottom-color: var(--color-brand-blue); 
+}
+
+.submenu-toggle {
+    display: none;
+}
+
+.subscribe-btn-mobile, .auth-btn-mobile {
+    display: none;
+}

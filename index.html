@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDOVERVIEW | Andover High School Student Newspaper</title>
+
+    <!-- DNS prefetch for external origins -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Preconnect to font origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <!-- Preload critical CSS and logo -->
+    <link rel="preload" href="/css/main.css" as="style">
+    <link rel="preload" href="/assets/images/logo.png" as="image">
+
+    <!-- Modulepreload for the critical JS chain -->
+    <link rel="modulepreload" href="/js/lib/app.js">
+    <link rel="modulepreload" href="/js/lib/router.js">
+    <link rel="modulepreload" href="/js/lib/api.js">
+    <link rel="modulepreload" href="/js/lib/auth.js">
+    <link rel="modulepreload" href="/js/lib/template.js">
+    <link rel="modulepreload" href="/js/lib/formatters.js">
+    <link rel="modulepreload" href="/js/ui/authUI.js">
+    <link rel="modulepreload" href="/js/pages/home.js">
+
+    <!-- Google Fonts: swap prevents invisible text during load -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css">
+</head>
+
+<body>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "fuse.js": "https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.mjs"
+        }
+    }
+    </script>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo.png" alt="ANDOVERVIEW Logo" width="180" height="50" fetchpriority="high">
+            </a>
+            <div class="header-center-content">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="/about" class="nav-link">About <button class="submenu-toggle"
+                                    aria-label="Toggle submenu">+</button></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/write-for-us">Write for Us</a></li>
+                                <li><a href="/contact">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/articles/all" class="nav-link">Articles</a></li>
+                        <li><a href="/articles/community" class="nav-link">Community</a></li>
+                        <li><a href="/articles/sports" class="nav-link">Sports</a></li>
+                        <li class="dropdown">
+                            <a href="/articles/arts" class="nav-link">Arts <button class="submenu-toggle"
+                                    aria-label="Toggle submenu">+</button></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/articles/reviews">Reviews</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/articles/opinion" class="nav-link">Opinion <button class="submenu-toggle"
+                                    aria-label="Toggle submenu">+</button></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/articles/editorial">Editorial</a></li>
+                                <li><a href="/articles/letter-to-the-editor">Letter to the Editor</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/issues" class="nav-link">Issues</a></li>
+                        <li class="subscribe-btn-mobile">
+                            <a href="/subscribe" class="button-primary">Subscribe</a>
+                        </li>
+                        <li id="auth-btn-mobile" class="auth-btn-mobile"></li>
+                    </ul>
+                </nav>
+                <div id="header-search-container" class="header-search-container">
+                    <form id="header-search-form">
+                        <input type="search" id="header-search-input"
+                            placeholder="SEARCH" autocomplete="off">
+                        <button type="button" id="header-search-clear-btn" class="header-search-clear-btn"
+                            aria-label="Clear search input">
+                            CLEAR
+                        </button>
+                        <button type="submit" id="header-search-go-btn" class="header-search-go-btn"
+                            disabled>Go</button>
+                    </form>
+                    <ul id="header-search-results" class="header-search-results"></ul>
+                </div>
+            </div>
+            <div class="header-right">
+                <div id="auth-status" class="auth-status">
+                    <a href="/login" class="button-secondary">Log In</a>
+                </div>
+                <a href="/subscribe" class="button-primary">Subscribe</a>
+
+                <button id="search-icon-btn" class="header-action-btn" aria-label="Open search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
+                <div class="mobile-toggle" role="button" aria-label="Toggle mobile menu" tabindex="0">
+                    <div class="bar top"></div>
+                    <div class="bar bottom"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="news-ticker-container" class="news-ticker-container" style="display: none;">
+        <div class="ticker-label">LATEST</div>
+        <div class="ticker-wrap">
+            <ul id="news-ticker-list">
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content">
+    </main>
+
+    <footer id="footer-cta" class="footer-cta hidden">
+        <div class="container">
+            <h2>Get the best stories from ANDOVERVIEW sent to your inbox.</h2>
+            <div id="footer-form-container" class="form-container">
+                <form id="subscribe-form-footer">
+                    <input type="email" id="subscribe-email-footer" placeholder="Enter your email address" required>
+                    <button type="submit" class="button-subscribe">Subscribe</button>
+                </form>
+                <div id="subscribe-success-message-footer" class="subscribe-success">
+                    <span>Thank you for subscribing!</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="main-footer">
+        <p>© 2026 ANDOVERVIEW. All Rights Reserved.</p>
+    </footer>
+
+    <div id="staff-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close" id="modal-close-btn">×</div>
+            <div class="modal-body" id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <!-- CDN libraries loaded with defer so they never block rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
+    <script src="/js/lib/app.js" type="module"></script>
+
+    <!-- Service Worker registration for fast repeat visits and offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                    .catch((err) => console.warn('[SW] Registration failed:', err));
+            });
+        }
+    </script>
+
+</body>
+
+</html>

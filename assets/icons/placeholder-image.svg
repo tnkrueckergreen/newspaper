@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <!-- Sky: Steel Blue -->
+  <rect width="1200" height="800" fill="#aab6c8"/>
+
+  <!-- Sun: Geometric Center (342, 353) -->
+  <circle cx="342" cy="353" r="55" fill="#e2e8f0" opacity="0.9"/>
+
+  <!-- Mountains -->
+  <path d="M 0 503 
+           C 40 469, 80 435, 125 435 
+           C 224 435, 297 578, 396 578 
+           C 538 578, 641 208, 783 208 
+           C 936 208, 1100 450, 1200 550 
+           L 1200 800 
+           L 0 800 
+           Z" 
+        fill="#e2e8f0"/>
+</svg>

@@ -1,0 +1,18 @@
+/* subscribe button styles */
+.subscribe-page .button-subscribe {
+    background-color: var(--color-brand-blue);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1px solid var(--color-brand-blue);
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 0;
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+}
+
+.subscribe-page .button-subscribe:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,40 @@
+/* subscribe form container styles */
+.subscribe-page .form-container {
+    position: relative;
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    min-height: 52px;
+}
+
+.subscribe-page #subscribe-form-page {
+    display: flex;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.subscribe-page #subscribe-form-page.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* email input styles */
+.subscribe-page #subscribe-email-page {
+    background-color: var(--color-light-gray);
+    border: 1px solid var(--color-border);
+    border-right: none;
+    color: var(--color-dark);
+    font-size: 16px;
+    padding: 14px 24px;
+    transition: all 0.2s ease-in-out;
+    flex-grow: 1;
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
+
+.subscribe-page #subscribe-email-page::placeholder { 
+    color: var(--color-text-secondary); 
+}
+
+.subscribe-page #subscribe-email-page:focus {
+    outline: none;
+    border-color: var(--color-brand-blue);
+}

@@ -1,0 +1,124 @@
+.auth-page {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
+}
+
+.auth-form-container {
+  max-width: 400px;
+  width: 100%;
+  background-color: var(--color-white);
+  padding: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.auth-form-container h1 {
+  font-family: var(--font-serif);
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-form-container .subtitle {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.auth-form-container .subtitle a {
+  color: var(--color-brand-blue);
+  font-weight: 500;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.auth-form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-light-gray);
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--color-brand-blue);
+}
+
+.auth-form button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  background-color: var(--color-brand-blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: opacity 0.2s;
+}
+
+.auth-form button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-form .error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  display: none;
+}
+
+.auth-form .field-hint {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.auth-form .field-hint a {
+  color: var(--color-brand-blue);
+  font-weight: 500;
+}
+
+.auth-success-message {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.auth-success-message p {
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.auth-success-message .button-link {
+  display: inline-block;
+  background-color: var(--color-brand-blue);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}

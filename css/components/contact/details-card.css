@@ -1,0 +1,81 @@
+/* contact details card styles */
+.contact-details-card {
+    background-color: var(--color-brand-blue); 
+    color: white; 
+    border-radius: 0; 
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; 
+}
+
+.contact-details-card h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem; 
+    margin-top: 0;
+    margin-bottom: 3rem; 
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; 
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+    font-size: 1.1rem; 
+    line-height: 1.6;
+}
+
+.contact-info-list a {
+    color: inherit;
+    text-decoration: none;
+}
+.contact-info-list a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    filter: invert(1) brightness(2);
+}
+
+.map-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+.map-iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* responsivenessss */
+@media (max-width: 768px) {
+    .contact-details-card {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .contact-details-card .contact-info-list li {
+        font-size: 0.9rem;
+    }
+
+    .contact-details-card h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+}

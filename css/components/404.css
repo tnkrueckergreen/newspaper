@@ -1,0 +1,85 @@
+/* 404 Not Found Page Styles */
+.not-found-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--color-bg);
+}
+
+.not-found-content {
+    max-width: 600px;
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.not-found-visual {
+    margin-bottom: 1.5rem;
+    color: var(--color-brand-blue);
+}
+
+/* A large, elegant serif number */
+.huge-404 {
+    font-family: var(--font-serif);
+    font-size: clamp(6rem, 15vw, 10rem);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    color: var(--color-dark);
+    display: block;
+}
+
+.not-found-label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand-blue);
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: block;
+}
+
+.not-found-content h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin: 1.5rem 0 1rem 0;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.not-found-content p {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.not-found-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.not-found-actions .button-primary,
+.not-found-actions .button-secondary {
+    min-width: 140px;
+}
+
+@media (max-width: 480px) {
+    .not-found-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .not-found-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .not-found-actions .button-primary,
+    .not-found-actions .button-secondary {
+        width: 100%;
+    }
+}

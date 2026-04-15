@@ -1,0 +1,79 @@
+/* article metadata styles */
+.author-meta, .single-article-meta-top {
+    display: flex;
+    align-items: center;
+}
+
+.author-meta { 
+    gap: 10px; 
+}
+
+.single-article-meta-top {
+    justify-content: center;
+    margin-top: 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 12px;
+}
+
+.single-article-meta-top .author-byline {
+    line-height: 1.6;
+}
+
+.single-article-meta-top .author-link {
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.single-article-meta-top .author-link:hover {
+    border-bottom-color: var(--color-brand-blue);
+    opacity: 1;
+}
+
+.single-article-meta-top .author-role {
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+
+.article-list-meta {
+    margin-top: 1rem;
+}
+
+.article-list-meta .author-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.article-list-meta .date-line {
+    display: block;
+    margin-top: 8px;
+}
+
+/* tags! */
+.tag-list { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 0.5rem; 
+    margin-top: 2rem; 
+}
+
+.tag-item {
+    background-color: var(--color-light-gray); 
+    color: var(--color-text-secondary); 
+    font-size: 0.8rem;
+    font-weight: 500; 
+    padding: 0.25rem 0.75rem; 
+    border-radius: 99px; 
+    border: 1px solid var(--color-border);
+}
+
+.tag-item:hover { 
+    background-color: var(--color-border); 
+    color: var(--color-dark); 
+    opacity: 1; 
+}
