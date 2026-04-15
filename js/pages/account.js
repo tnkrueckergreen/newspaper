@@ -1335,6 +1335,80 @@ async function loadAdminIssues() {
     container.innerHTML = '<div class="loader-inline"></div>';
     const issues = await getAdminIssues();
 
+    function attachIssueDeleteListener(btn) {
+        addTrackedListener(btn, 'click', async () => {
+            const filename = btn.getAttribute('data-filename');
+            if (confirm(`Are you sure you want to delete the issue "${filename}"?`)) {
+                const row = btn.closest('tr');
+                btn.disabled = true;
+                const result = await deleteAdminIssue(filename);
+                if (result.success) {
+                    showSuccess('Issue deleted successfully');
+                    row?.remove();
+                    if (!container.querySelector('tbody tr')) {
+                        container.innerHTML = '<p class="empty-state-text">No issues found.</p>';
+                    }
+                } else {
+                    btn.disabled = false;
+                    showError(result.error);
+                }
+            }
+        });
+    }
+
+    function createIssueRow(issue) {
+        const row = document.createElement('tr');
+        row.dataset.issueFilename = issue.filename;
+        row.innerHTML = `
+            <td>${issue.name}</td>
+            <td>${new Date(issue.date).toLocaleDateString()}</td>
+            <td>${issue.filename}</td>
+            <td class="text-right">
+                <div class="action-btn-group">
+                    <a href="${issue.url || `/data/issues/pdfs/${issue.filename}`}" target="_blank" class="button-icon-only" title="View PDF">
+                        ${actionIcons.eye}
+                    </a>
+                    <button class="button-icon-only delete admin-delete-issue-btn" data-filename="${issue.filename}" title="Delete Issue">
+                        ${actionIcons.trash}
+                    </button>
+                </div>
+            </td>
+        `;
+        attachIssueDeleteListener(row.querySelector('.admin-delete-issue-btn'));
+        return row;
+    }
+
+    function addIssueRow(issue) {
+        let tbody = container.querySelector('tbody');
+        if (!tbody) {
+            container.innerHTML = `
+                <div class="users-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Issue Name</th>
+                                <th>Date</th>
+                                <th>Filename</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            `;
+            tbody = container.querySelector('tbody');
+        }
+
+        const newRow = createIssueRow(issue);
+        const newDate = new Date(issue.date);
+        const rows = [...tbody.querySelectorAll('tr')];
+        const nextRow = rows.find(row => {
+            const existingDate = new Date(row.children[1].textContent);
+            return newDate > existingDate;
+        });
+        tbody.insertBefore(newRow, nextRow || null);
+    }
+
     // Pre-calculate next logical issue
     if (issues && issues.length > 0) {
         // Expecting names like "Volume X, Issue Y – Month Day, Year"
@@ -1385,48 +1459,14 @@ async function loadAdminIssues() {
                         </tr>
                     </thead>
                     <tbody>
-                        ${issues.map(issue => `
-                            <tr data-issue-filename="${issue.filename}">
-                                <td>${issue.name}</td>
-                                <td>${new Date(issue.date).toLocaleDateString()}</td>
-                                <td>${issue.filename}</td>
-                                <td class="text-right">
-                                    <div class="action-btn-group">
-                                        <a href="${issue.url}" target="_blank" class="button-icon-only" title="View PDF">
-                                            ${actionIcons.eye}
-                                        </a>
-                                        <button class="button-icon-only delete admin-delete-issue-btn" data-filename="${issue.filename}" title="Delete Issue">
-                                            ${actionIcons.trash}
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        `).join('')}
+                        ${issues.map(issue => createIssueRow(issue).outerHTML).join('')}
                     </tbody>
                 </table>
             </div>
         `;
 
-        // Attach delete listeners
         container.querySelectorAll('.admin-delete-issue-btn').forEach(btn => {
-            addTrackedListener(btn, 'click', async () => {
-                const filename = btn.getAttribute('data-filename');
-                if (confirm(`Are you sure you want to delete the issue "${filename}"?`)) {
-                    const row = btn.closest('tr');
-                    btn.disabled = true;
-                    const result = await deleteAdminIssue(filename);
-                    if (result.success) {
-                        showSuccess('Issue deleted successfully');
-                        row?.remove();
-                        if (!container.querySelector('tbody tr')) {
-                            container.innerHTML = '<p class="empty-state-text">No issues found.</p>';
-                        }
-                    } else {
-                        btn.disabled = false;
-                        showError(result.error);
-                    }
-                }
-            });
+            attachIssueDeleteListener(btn);
         });
     }
 
@@ -1480,7 +1520,7 @@ async function loadAdminIssues() {
             if (result.success) {
                 showSuccess('Issue added successfully');
                 addIssueForm.reset();
-                loadAdminIssues();
+                addIssueRow(result.issue);
             } else {
                 showError(result.error);
             }
